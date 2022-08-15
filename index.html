@@ -25,6 +25,7 @@
                     </ul>
                 </li>
                 <a class = "nav-icon-search" href=""><i class=" fa-solid fa-magnifying-glass"></i></a>
+                <a class="nav-mobile-icon"><i class="fa-solid fa-bars"></i></a>
             </ul>
         </div>
         <div id="slider">
@@ -97,7 +98,7 @@
                                 <div class="place-text">
                                     Praesent tincidunt sed tellus ut rutrum sed vitae justo.
                                 </div>
-                                <button class="place-buy-btn js-modal-buy-btn">Buy Tickets</button>
+                                <button class="place-buy-btn btn-mobile js-modal-buy-btn">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -113,7 +114,7 @@
                                 <div class="place-text">
                                     Praesent tincidunt sed tellus ut rutrum sed vitae justo.
                                 </div>
-                                <button class="place-buy-btn js-modal-buy-btn">Buy Tickets</button>
+                                <button class="place-buy-btn btn-mobile js-modal-buy-btn">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -129,7 +130,7 @@
                                 <div class="place-text">
                                     Praesent tincidunt sed tellus ut rutrum sed vitae justo.
                                 </div>
-                                <button class="place-buy-btn js-modal-buy-btn">Buy Tickets</button>
+                                <button class="place-buy-btn btn-mobile js-modal-buy-btn">Buy Tickets</button>
                             </div>
                         </div>
                     </div>
@@ -145,18 +146,18 @@
                         Fan? Drop a note!
                     </div>
                     <div class="contact-area">
-                        <div class="col-half contact-info">
+                        <div class="contact-item contact-info">
                             <p><i class="fa-solid fa-location-dot"></i>Chicago, US</p>
                             <p><i class="fa-solid fa-phone"></i></i>Phone: +00 151515</p>
                             <p><i class="fa-solid fa-envelope"></i>Email: mail@mail.com</p>
                         </div>
-                        <div class="col-half contact-input">
-                            <div class="col-half contact-input-top">
+                        <div class="contact-item contact-input">
+                            <div class="contact-item contact-input-top">
                                 <input type="text" placeholder="Name" required name="Name" class="form-contact contact-item">
                                 <input type="email" placeholder="Email" required name="Email" class="form-contact contact-item">
                             </div>
                             <input type="text" placeholder="Message" required name="Message"class="form-contact" >
-                            <input type="submit" value="SEND" class = "submit-btn">
+                            <button class = "submit-btn btn-mobile" type = "submit">Send</button>
                         </div>
                     </div>
                 </div>
@@ -176,6 +177,7 @@
         </div>
     </div>
     <div class="modal js-modal">
+        <div class="modal-overlay"></div>
         <div class="modal-container js-modal-container">
             <div class="modal-header">
                 <div class="modal-title">
@@ -239,6 +241,32 @@
         modalContainer.addEventListener('click', function (event) {
             event.stopPropagation()
         })
+
+        const mobileIcon = document.querySelector('.nav-mobile-icon')
+        const header = document.getElementById('header')
+        const itemsMenu = document.querySelectorAll('a[href*="#"]')
+        
+        for (item of itemsMenu) {
+            item.onclick = function (event) {
+                const isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains("subnav")
+                if (isParentMenu) {
+                    event.preventDefault()
+                } 
+                else {
+                    header.style.height = null
+                }
+            }
+        }
+        
+        mobileIcon.onclick = function() {
+            if (header.clientHeight === 46) {
+                header.style.height = "auto"
+            }
+            else {
+                header.style.height = null
+            }
+        }
+
     </script>
 </body>
 </html>

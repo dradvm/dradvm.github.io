@@ -10,9 +10,6 @@ button {
 html {
     font-family: helvetica, arial, sans-serif;
 }
-.col-half {
-    width: 50%;
-}
 #main {
 
 }
@@ -39,7 +36,7 @@ html {
     text-decoration: none;
     line-height: 46px;
     padding: 0 24px;
-    display: inline-block;
+    display: block;
     font-size: 15px;
 }
 #nav .subnav>li:hover,
@@ -48,7 +45,8 @@ html {
 .modal-close-icon:hover,
 .modal-pay-btn:hover,
 .modal-close-btn:hover,
-.submit-btn:hover{
+.submit-btn:hover,
+.nav-mobile-icon:hover{
     color: black;
     background-color: #ccc;
 }
@@ -66,6 +64,7 @@ html {
     color: black;
     line-height: 40px;
     width: 100%;
+    padding: 0px 30px;
 }
 #nav li:hover .subnav {
     display: block;
@@ -76,8 +75,10 @@ html {
     top: -1px;
     left: 2px;
 }
-.nav-icon-search {
+.nav-icon-search,
+.nav-mobile-icon {
     position: absolute;
+    top: 0;
     right: 0;
     font-size: 16px;
     line-height: 46px;
@@ -86,6 +87,9 @@ html {
 }
 .nav-icon-search:hover {
     background-color: #f44336;
+}
+.nav-mobile-icon {
+    display: none;
 }
 #slider {
     position: relative;
@@ -106,10 +110,12 @@ html {
 .text-content-title {
     margin-bottom: 20px;
     font-weight: 100;
+    text-shadow: #333;
 }
 .text-content-discription {
     font-weight: 600;
     font-size: 15px;
+    text-shadow: #333;
 }
 #content {
 
@@ -119,16 +125,16 @@ html {
     margin-right: auto;
     text-align: center;
     width: 800px;
-    padding: 80px 0px;
+    max-width: 100%;
+    padding: 80px 16px;
 }
 .content-heading {
-    margin: 15px 0px;
     font-size: 30px;
     letter-spacing: 3px;
     font-weight: 100;
 }   
 .content-sub-heading {
-    margin: 20px 0px;
+    margin: 30px 0px;
     font-style: italic;
     opacity: 0.6;
     font-size: 15px;
@@ -236,10 +242,16 @@ html {
     right: 0;
     align-items: center;
     justify-content: center;
-    animation: modalFaceIn ease .3s;
 }
 .open {
     display: flex;
+}
+.modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .3;
 }
 .modal-container {
     background-color: white;
@@ -247,6 +259,7 @@ html {
     width: 900px;
     position: relative;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    animation: modalFaceIn ease .3s;
 }
 .modal-header {
     background-color: #009688;
@@ -318,7 +331,7 @@ html {
     color: rgb(95, 95, 255);
 }
 .contact-section {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 .contact-area {
     display: flex;
@@ -340,7 +353,7 @@ html {
     text-align: right;
 }
 .contact-item {
-    width: 50%;
+    width: 100%;
 }
 .contact-input>.form-contact {
     width: 100%;
@@ -380,6 +393,7 @@ html {
     font-size: 15px;
     margin: 15px 0px;
 }
+
 @keyframes modalFaceIn {
     from {
         transform: translateY(-130px);
@@ -388,5 +402,88 @@ html {
     to {
         transform: translateY(0px);
         opacity: 1;
+    }
+}
+/* Tablet & Mobile */
+@media (max-width: 63.9375em) {
+
+    .btn-mobile{
+        text-align: center;
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+    }
+    .contact-info {
+        line-height: 2;
+    }
+    .form-contact {
+        font-size: 20px;
+    }
+    .socials-list a {
+        margin: 0 8px;
+        font-size: 30px;
+    }
+    #footer p {
+        font-size: 18px;
+    }
+    #footer p a {
+        padding: 8px 0px;
+    }
+}
+/* Mobile */
+@media (max-width: 46.1875em) {
+    #header {
+        overflow: hidden;
+    }
+    #nav li {
+        display: block;
+    }
+    #nav .subnav {
+        position: initial;
+        background-color: #333;
+        width: 100%;
+    }
+    #nav .subnav li a {
+        color: white;
+        padding: 2px 40px;
+    }
+    #nav > li:first-child {
+        display: inline-block;
+    }
+    .nav-icon-search {
+        display: none;
+    }
+    .nav-mobile-icon {
+        display: block;
+    }
+    .member-list {
+        flex-direction: column;
+    }
+    .member-item {
+        width: 100%;
+    }
+    .member-name {
+        margin-top: 32px;
+    }
+    .place-list {
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .place-item {
+        width: 100%;
+        margin-top: 16px;
+    }
+    .text-content {
+        display: none;
+    }
+    .contact-area,
+    .contact-input-top {
+        flex-direction: column;
+    }
+    .contact-input-top {
+        margin-top: 16px;
+    }
+    .contact-input-top .contact-item {
+        margin-top: 8px;
     }
 }
