@@ -266,7 +266,16 @@
                 header.style.height = null
             }
         }
-
+        const content = document.querySelector("#content")
+        
+        content.onclick = function() {
+            if (header.clientHeight === 46) {
+                
+            }
+            else {
+                header.style.height = null
+            }
+        }
     </script>
 </body>
 </html>
